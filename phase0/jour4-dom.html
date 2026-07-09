@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jour 4 — le DOM</title>
+    <style>
+      body { font-family: system-ui, sans-serif; max-width: 480px; margin: 40px auto; padding: 0 16px; }
+      input, button { font-size: 16px; padding: 6px 10px; }
+      li { cursor: pointer; padding: 4px 0; }
+      .done { text-decoration: line-through; color: gray; }
+    </style>
+  </head>
+  <body>
+    <h1>Jour 4 — le DOM sans jQuery</h1>
+    <input id="champ" type="text" placeholder="Une tâche..." />
+    <button id="ajouter">Ajouter</button>
+    <ul id="liste"></ul>
+
+    <!-- charge ta logique (module) -->
+    <script type="module" src="/jour4-dom.js"></script>
+  </body>
+</html>
