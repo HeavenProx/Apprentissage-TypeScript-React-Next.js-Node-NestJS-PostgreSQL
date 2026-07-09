@@ -5,7 +5,7 @@
 //  Chaque section = 1 exemple qui marche, puis 1 TODO à compléter.
 // ============================================================
 
-// hugo@debian-hugo:/var/www/apprentissage/phase0$ node scratch.js
+// lancer : node scratch.js
 
 
 // ------------------------------------------------------------
