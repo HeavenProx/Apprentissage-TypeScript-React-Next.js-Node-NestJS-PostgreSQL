@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jour 8 — Todo-list</title>
+    <style>
+      body { font-family: system-ui, sans-serif; max-width: 480px; margin: 40px auto; padding: 0 16px; }
+      input { font-size: 16px; padding: 6px 10px; width: 65%; }
+      button { font-size: 16px; padding: 6px 12px; }
+      ul { padding: 0; list-style: none; }
+      li { padding: 6px 0; border-bottom: 1px solid #eee; }
+    </style>
+  </head>
+  <body>
+    <h1>Ma todo-list</h1>
+    <input id="champ" type="text" placeholder="Nouvelle tâche..." />
+    <button id="ajouter">Ajouter</button>
+    <ul id="liste"></ul>
+
+    <script type="module" src="/jour8-todo.js"></script>
+  </body>
+</html>
