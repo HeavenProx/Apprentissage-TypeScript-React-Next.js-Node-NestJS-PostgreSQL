@@ -38,35 +38,8 @@ function render() {
   //    et branche les 3 comportements ci-dessous au moment où tu les crées
   liste.innerHTML = "";
 
-  todosAffiches.forEach((todo) => {
-    const li = document.createElement("li");
-
-    const checkboxTodo = document.createElement("input");
-    checkboxTodo.type = "checkbox";
-    checkboxTodo.checked = todo.fait;
-
-    const texteTodo = document.createElement("span");
-    texteTodo.textContent = todo.message;
-    texteTodo.classList.toggle("done", todo.fait);
-
-    const deleteTodo = document.createElement("button");
-    deleteTodo.textContent = "×";
-
-    li.append(checkboxTodo, texteTodo, deleteTodo);
-    liste.append(li);
-
-
-    checkboxTodo.addEventListener("change", () => {
-      todo.fait = !todo.fait;
-      render();
-    });
-
-    deleteTodo.addEventListener("click", () => {
-      todos = todos.filter((todo2) => todo2.id !== todo.id )
-      render();
-    });
-
-    // sauvegarder dans le localstorage
+  todosAffiches.forEach((todo) => {    
+    appendLi(todo);
   })
   
   // 3) mets à jour #compteur (ex : "2 tâche(s) restante(s)")
@@ -74,7 +47,36 @@ function render() {
   const todosRestant = todos.filter((todo) => todo.fait == false)
   compteur.textContent = todosRestant.length + " todo(s) à finir !";
 
+  // sauvegarder dans le localstorage
   sauvegarder();
+}
+
+function appendLi(todo){
+  const li = document.createElement("li");
+
+  const checkboxTodo = document.createElement("input");
+  checkboxTodo.type = "checkbox";
+  checkboxTodo.checked = todo.fait;
+
+  const texteTodo = document.createElement("span");
+  texteTodo.textContent = todo.message;
+  texteTodo.classList.toggle("done", todo.fait);
+
+  const deleteTodo = document.createElement("button");
+  deleteTodo.textContent = "×";
+
+  li.append(checkboxTodo, texteTodo, deleteTodo);
+  liste.append(li);
+
+  checkboxTodo.addEventListener("change", () => {
+    todo.fait = !todo.fait;
+    render();
+  });
+
+  deleteTodo.addEventListener("click", () => {
+    todos = todos.filter((todo2) => todo2.id !== todo.id )
+    render();
+  });
 }
 
 
