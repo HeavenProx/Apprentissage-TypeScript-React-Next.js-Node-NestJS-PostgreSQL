@@ -153,13 +153,13 @@ const admin1: Admin = { id:4, nom: "Duperthuy", email: "duperthuy@gmail.com", ro
 //   un identifiant, un texte, et l'état "fait" ou non.
 //   Puis déclare `let todos: Todo[] = [];` et ajoute-lui 2 éléments.
 //   -> tu viens d'écrire la première ligne de ta todo-list en TypeScript.
-interface Todo {
+interface TodoSession {
   readonly id: number,
   text: string,
   fait: boolean
 }
 
-let todos: Todo[] = [
+let todos: TodoSession[] = [
   { id: 1, text: "tache1", fait: true},
   { id: 2, text: "tache2", fait: false}
 ];
