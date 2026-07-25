@@ -6,11 +6,36 @@
     <title>Document</title>
 </head>
 <body>
+    <style>
+      body { font-family: system-ui, sans-serif; max-width: 480px; margin: 40px auto; padding: 0 16px; }
+      input[type="text"] { font-size: 16px; padding: 6px 10px; width: 60%; }
+      button { font-size: 15px; padding: 5px 10px; }
+      ul { padding: 0; list-style: none; }
+      li { padding: 6px 0; border-bottom: 1px solid #eee; display: flex; align-items: center; gap: 8px; }
+      li span { flex: 1; }
+      .done { text-decoration: line-through; color: gray; }
+      #filtres { margin: 16px 0 8px; display: flex; gap: 6px; }
+      #filtres button.actif { background: #333; color: white; }
+      #compteur { color: #555; font-size: 14px; }
+    </style>
 
-    
+    <h1>Ma todo-list TS</h1>
+
+    <input id="champ" type="text" placeholder="Nouvelle tâche..." />
+    <button id="ajouter">Ajouter</button>
+
+    <!-- data-filtre = la valeur du filtre, lisible en JS via btn.dataset.filtre -->
+    <div id="filtres">
+      <button data-filtre="toutes" class="actif">Toutes</button>
+      <button data-filtre="actives">Actives</button>
+      <button data-filtre="terminees">Terminées</button>
+    </div>
+
+    <p id="compteur"></p>
+    <ul id="liste"></ul>
 
 
 
-    <script type="module" src="/todo.ts"></script>
+    <script type="module" src="todo.ts"></script>
 </body>
 </html>
