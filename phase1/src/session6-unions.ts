@@ -26,7 +26,13 @@ console.log("1a →", longueur("hello"), longueur(42));
 //   x.toUpperCase() si c'est une chaîne, et x.toFixed(2) si c'est un
 //   nombre. Laisse le narrowing te guider : chaque branche débloque
 //   les méthodes du bon type.
-
+function formater(x: string | number): string {
+  if(typeof(x) === "string"){
+    return x.toUpperCase();
+  }
+  return x.toFixed(2);
+}
+console.log("1b →", formater("hello"), formater(42));
 
 // ------------------------------------------------------------
 // 2. Le problème SANS discriminant
@@ -54,7 +60,12 @@ interface SourceUrl {
   type: "url";
   url: string;
 }
-type Source = SourceFichier | SourceUrl;
+interface SourceCouleur { 
+  type: "couleur"; 
+  hex: string 
+}
+
+type Source = SourceFichier | SourceUrl | SourceCouleur;
 
 // Impossible de créer une source incohérente : si type vaut "fichier",
 // TS EXIGE `chemin` et INTERDIT `url`.
@@ -62,9 +73,12 @@ type Source = SourceFichier | SourceUrl;
 function decrire(source: Source): string {
   switch (source.type) {
     case "fichier":
-      return `Fichier local : ${source.chemin}`;   // .url serait refusé ici
+      // return `Fichier local : ${source.url}`;   // .url refusé ici
+      return `Fichier local : ${source.chemin}`;
     case "url":
       return `Distant : ${source.url}`;
+    case "couleur":
+      return `Couleur : ${source.hex}`;
   }
 }
 
@@ -90,6 +104,8 @@ function decrireStrict(source: Source): string {
       return source.chemin;
     case "url":
       return source.url;
+    case "couleur":
+      return source.hex
     default: {
       const _exhaustif: never = source;   // erreur ici si un cas manque
       return _exhaustif;
@@ -111,11 +127,14 @@ console.log("4a →", decrireStrict(s1));
 // ------------------------------------------------------------
 type Reponse =
   | { statut: "ok"; donnees: string[] }
+  | { statut: "chargement"; donnees: string[] }
   | { statut: "erreur"; message: string };
 
 function traiter(r: Reponse): string {
   if (r.statut === "ok") {
     return `${r.donnees.length} éléments`;
+  } else if (r.statut === "chargement") {
+    return "en cours...";
   }
   return `Erreur : ${r.message}`;
 }
