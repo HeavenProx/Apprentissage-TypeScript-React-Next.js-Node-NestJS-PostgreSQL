@@ -1,0 +1,9 @@
+# Dépendances (régénérables avec npm install)
+node_modules/
+
+# Sorties générées par les exos / le build
+out/
+dist/
+
+# Logs
+*.log
