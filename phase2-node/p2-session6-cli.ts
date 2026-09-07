@@ -39,7 +39,8 @@ if(!premierArg){
 // ------------------------------------------------------------
 function lireOption(args: string[], nom: string, defaut: string): string {
   const i = args.indexOf(nom);
-  if (i !== -1 && args[i + 1]) return args[i + 1];
+  const arg1 = args[i + 1];
+  if (i !== -1 && arg1) return arg1;
   return defaut;
 }
 
